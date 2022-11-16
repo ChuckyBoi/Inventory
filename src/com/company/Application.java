@@ -16,7 +16,7 @@ public class Application extends Window {
     }
     public void setup() {
 
-        setActivity(false);
+        setActivity(true);
         contentPane = (JPanel) getContentPane();
         contentPane.setLayout(null);
 

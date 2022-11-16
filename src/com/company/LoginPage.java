@@ -21,7 +21,8 @@ public class LoginPage extends Window implements ActionListener{
 
     LoginPage(HashMap<String,String> loginInfoOriginal){
         contentPane = (JPanel) getContentPane();
-        setVisible(true);
+        //setStart
+        setVisible(false);
 
         logininfo = loginInfoOriginal;
 
