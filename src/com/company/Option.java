@@ -6,12 +6,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import javax.swing.border.Border;
+import javax.swing.AbstractButton;
 
 public class Option extends Window{
 
     JButton b1 = new JButton("Man united");
     JButton b2 = new JButton("Cristiano ");
     JButton b3 = new JButton("Harry Maguire");
+
 
 
 
@@ -29,9 +31,11 @@ public class Option extends Window{
         Dimension Buttonsize = new Dimension(super.getWidth()/4,80);
 
 
-        b1.setBorder(new RoundedBorder(40)); //10 is the radius
+        b1.setBorder(new RoundedBorder(20)); //10 is the radius
+        b2.setBorder(new RoundedBorder(20)); //10 is the radius
+        b3.setBorder(new RoundedBorder(20)); //10 is the radius
 
-        b1.setForeground(Color.BLUE);
+
 
         b1.setSize(Buttonsize);
         b2.setSize(Buttonsize);
@@ -51,6 +55,7 @@ public class Option extends Window{
         b1.setForeground(Color.black);
         b2.setForeground(Color.black);
         b3.setForeground(Color.black);
+
 
 
 
