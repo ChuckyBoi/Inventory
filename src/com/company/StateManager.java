@@ -8,6 +8,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.security.spec.ECField;
 import java.util.Scanner;
@@ -30,8 +31,6 @@ public class StateManager{
        // p.play();
         audioPlayer.play();
         audioPlayer.pause();
-
-
         //make it so you dont use a.b1. ...
           a.b1.addActionListener(new ActionListener() {
               public void actionPerformed(ActionEvent e) {

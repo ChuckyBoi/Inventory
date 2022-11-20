@@ -10,6 +10,7 @@ public class ImageButton extends JButton {
 
     Image image;
     String text;
+    int x=0,y=0;
 
     public ImageButton(String text){
         this.text= text;
@@ -18,6 +19,8 @@ public class ImageButton extends JButton {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
         setOpaque(false);
         setContentAreaFilled(false);
         setBorderPainted(false);
@@ -25,14 +28,17 @@ public class ImageButton extends JButton {
 
     }
 
-    @Override
+    public void setPos(int x,int y){
+     this.x=x;
+     this.y=y;
+        System.out.println("x="+x);
+    }
+
     public void paint(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.drawImage(image, 0, 0, null);
-
         write(g,text);
-
     }
 
 
@@ -44,9 +50,9 @@ public class ImageButton extends JButton {
         int positionX = (image.getWidth(this) - metrics.stringWidth(text)) / 2;
         int positionY = (image.getHeight(this)- metrics.getHeight()) / 2 + metrics.getAscent();
         g.drawString(text, positionX, positionY);
-
-
     }
+
+
 
 
 }
