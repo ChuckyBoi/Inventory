@@ -4,8 +4,13 @@ package com.company;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.security.spec.ECField;
+import java.util.Scanner;
 
 public class StateManager{
 
@@ -15,14 +20,18 @@ public class StateManager{
 
     IDandPasswords idandPasswords = new IDandPasswords();
     LoginPage loginPage = new LoginPage(idandPasswords.getLoginInfo());
-    //PlayMusic p = new PlayMusic();
+    PlayMusic audioPlayer = new PlayMusic("C:/Users/Szilard/Desktop/MAN/manU.wav");
 
-
+    boolean startMusic=false;
 
 
     public void run(){
 
        // p.play();
+        audioPlayer.play();
+        audioPlayer.pause();
+
+
         //make it so you dont use a.b1. ...
           a.b1.addActionListener(new ActionListener() {
               public void actionPerformed(ActionEvent e) {
@@ -36,6 +45,17 @@ public class StateManager{
                 Check();
             }
         });
+        o.b4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                if (audioPlayer.status.equals("play")) {
+                    audioPlayer.pause();
+                }
+                else{
+                    audioPlayer.play();
+                }
+                }
+        });
         loginPage.loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,6 +68,8 @@ public class StateManager{
                 }
             }
         });
+
+
       }
 
 

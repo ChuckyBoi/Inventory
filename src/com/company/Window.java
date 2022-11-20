@@ -8,14 +8,15 @@ import java.awt.image.BufferedImage;
 
 public class Window extends JFrame implements  State{
 
-    public static int WIDTH = 1920, HEIGHT = 1080;
+
 
     JPanel contentPane;
 
     public Window() {
 
 
-        setSize(WIDTH, HEIGHT);
+        Dimension size = getToolkit().getScreenSize();
+        setSize(size);
         setTitle("vettel my ");
         setResizable(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
