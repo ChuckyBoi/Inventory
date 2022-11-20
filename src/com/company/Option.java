@@ -82,7 +82,7 @@ public class Option extends Window{
        contentPane.add(b1);
        contentPane.add(b2);
        contentPane.add(b3);
-       contentPane.add(panel);
+      contentPane.add(panel);
 
     //b1.setPos(b1.getBounds().x,b1.getBounds().y);
    // b2.setPos(b2.getBounds().x,b2.getBounds().y);
