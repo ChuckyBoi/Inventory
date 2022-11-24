@@ -25,9 +25,8 @@ import java.io.IOException;
             setLayout(null);
         }
 
-
         public void paint(Graphics g) {
-            super.paintComponent(g);
+           // super.paintComponent(g);
 
             int width = this.getSize().width;
             int height = this.getSize().height;

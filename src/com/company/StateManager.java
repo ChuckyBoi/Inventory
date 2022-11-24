@@ -44,7 +44,7 @@ public class StateManager{
                 Check();
             }
         });
-        o.b4.addActionListener(new ActionListener() {
+        o.Music.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
                 if (audioPlayer.status.equals("play")) {

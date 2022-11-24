@@ -19,14 +19,21 @@ public class Option extends Window{
     //Image img = Toolkit.getDefaultToolkit().createImage("C:/Users/Szilard/Desktop/MAN/stadium.jpg");
 
 
-    ImageButton b1 = new ImageButton("Man United");
-    ImageButton b2 = new ImageButton("Cristiano ");
-    ImageButton b3 = new ImageButton("Harry");
-    Icon icon = new ImageIcon("C:/Users/Szilard/Desktop/MAN/stop2.png");
-    JButton b4 = new JButton(icon);
+    ImageButton b1 = new ImageButton("Man United","C:/Users/Szilard/Desktop/MAN/pngegg3.png");
+    ImageButton b2 = new ImageButton("Cristiano ","C:/Users/Szilard/Desktop/MAN/pngegg3.png");
+    ImageButton b3 = new ImageButton("Harry","C:/Users/Szilard/Desktop/MAN/pngegg3.png");
+    ImageButton Exit = new ImageButton("Exit","C:/Users/Szilard/Desktop/MAN/pngegg4.png");
 
-   //Background a = new Background("C:/Users/Szilard/Desktop/MAN/stadium.jpg");
+
+
+
+
+    Icon icon = new ImageIcon("C:/Users/Szilard/Desktop/MAN/stop2.png");
+    JButton Music = new JButton(icon);
+
     Background panel = new Background(new ImageIcon("C:/Users/Szilard/Desktop/MAN/logo.jpg").getImage());
+    BackgroundForButtons panelForButtons = new BackgroundForButtons(new ImageIcon("C:/Users/Szilard/Desktop/MAN/ForButtons.png").getImage());
+
 
 
 
@@ -58,13 +65,21 @@ public class Option extends Window{
         b1.setSize(Buttonsize);
         b2.setSize(Buttonsize);
         b3.setSize(Buttonsize);
-        b4.setSize(60,60);
+
+        Exit.setSize((int)Buttonsize.getWidth()/2,(int)Buttonsize.getHeight());
+
+        Music.setSize(60,60);
 
 
-        b1.setLocation(super.getWidth()/2-(int)Buttonsize.getWidth()/2,super.getHeight()/2-(int)Buttonsize.getHeight()*1/3);
-        b2.setLocation(super.getWidth()/2-(int)Buttonsize.getWidth()/2,super.getHeight()/2-(int)Buttonsize.getHeight()*5/3);
-        b3.setLocation(super.getWidth()/2-(int)Buttonsize.getWidth()/2,super.getHeight()/2-(int)Buttonsize.getHeight()*9/3);
-        b4.setLocation(super.getWidth()-(int)b4.getSize().getWidth()*3/2,b4.getHeight()/4);
+
+        b1.setLocation(super.getWidth()/4-(int)Buttonsize.getWidth()/2,super.getHeight()/2-(int)Buttonsize.getHeight()*13/3);
+        b2.setLocation(super.getWidth()/4-(int)Buttonsize.getWidth()/2,super.getHeight()/2-(int)Buttonsize.getHeight()*9/3);
+        b3.setLocation(super.getWidth()/4-(int)Buttonsize.getWidth()/2,super.getHeight()/2-(int)Buttonsize.getHeight()*5/3);
+        Exit.setLocation(super.getWidth()/4-(int)Exit.getWidth()/2,super.getHeight()/2-(int)Exit.getHeight()*1/3);
+
+
+
+        Music.setLocation(super.getWidth()-(int)Music.getSize().getWidth()*3/2,Music.getHeight()/4);
 
         //b1.setFont(new java.awt.Font("Garamond", Font.PLAIN, 70));
       //  b2.setFont(new java.awt.Font("Garamond", Font.PLAIN, 70));
@@ -78,11 +93,19 @@ public class Option extends Window{
 
         //contentPane.add(a);
 
-       contentPane.add(b4);
+
        contentPane.add(b1);
        contentPane.add(b2);
        contentPane.add(b3);
-      contentPane.add(panel);
+       contentPane.add(Exit);
+       contentPane.add(Music);
+
+
+        contentPane.add(panelForButtons);
+        contentPane.add(panel);
+
+
+
 
     //b1.setPos(b1.getBounds().x,b1.getBounds().y);
    // b2.setPos(b2.getBounds().x,b2.getBounds().y);
