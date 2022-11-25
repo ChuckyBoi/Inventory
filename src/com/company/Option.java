@@ -100,7 +100,8 @@ public class Option extends Window{
        contentPane.add(Exit);
        contentPane.add(Music);
 
-
+        panelForButtons.setLenght(b1.getWidth());
+       panelForButtons.setPosition(getToolkit().getScreenSize().width/4-b1.getWidth()/2);
         contentPane.add(panelForButtons);
         contentPane.add(panel);
 

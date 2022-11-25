@@ -9,7 +9,9 @@ import java.awt.image.RescaleOp;
 class BackgroundForButtons extends JPanel {
         private Image img;
         Dimension size;
-            BufferedImage Bimg;
+        BufferedImage Bimg;
+        int positionX=0;
+        int lenght=0;
 
         public BackgroundForButtons(String img) {
 
@@ -26,7 +28,12 @@ class BackgroundForButtons extends JPanel {
             setLayout(null);
         }
 
-
+        public void setPosition(int x){
+            positionX=x;
+        }
+        public void setLenght(int x){
+            lenght=x;
+        }
         public void paint(Graphics g) {
           //  super.paintComponent(g);
             Bimg=setTransparent(img);
@@ -34,6 +41,7 @@ class BackgroundForButtons extends JPanel {
 
             int width = this.getSize().width;
             int height = this.getSize().height;
+
             int x= (int)size.getWidth();
 
             if (this.img != null) {
@@ -43,7 +51,7 @@ class BackgroundForButtons extends JPanel {
                 //createGraphics.drawImage(img, getToolkit().getScreenSize().width/2-x/2,0,img.getWidth(null),height ,null);
 
                 //POSITION IS SET HERE,FIX
-                g.drawImage(Bimg, getToolkit().getScreenSize().width/4-x/2,0,img.getWidth(null),height ,null);
+                g.drawImage(Bimg, positionX,0,lenght,height ,null);
             }
         }
     public static BufferedImage setTransparent(Image image)

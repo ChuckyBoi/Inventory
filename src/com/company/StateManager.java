@@ -26,18 +26,18 @@ public class StateManager{
     boolean startMusic=false;
 
 
-    public void run(){
+    public void run() {
 
-       // p.play();
+        // p.play();
         audioPlayer.play();
         audioPlayer.pause();
         //make it so you dont use a.b1. ...
-          a.b1.addActionListener(new ActionListener() {
-              public void actionPerformed(ActionEvent e) {
-                  o.doAction(context);
-                  Check();
-              }
-          });
+        a.b1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                o.doAction(context);
+                Check();
+            }
+        });
         o.b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 a.doAction(context);
@@ -49,27 +49,40 @@ public class StateManager{
 
                 if (audioPlayer.status.equals("play")) {
                     audioPlayer.pause();
-                }
-                else{
+                } else {
                     audioPlayer.play();
-                }
-                }
-        });
-        loginPage.loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource()==loginPage.loginButton) {
-                    loginPage.CheckPassword();
-                    if(loginPage.check()){
-                        loginPage.doAction(context);
-                        Check();
-                    }
                 }
             }
         });
 
-       // o.b1.action();
-      }
+        loginPage.loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == loginPage.loginButton) {
+                    loginPage.CheckPassword();
+                    if (loginPage.check()) {
+                        loginPage.doAction(context);
+                        Check();
+                    }
+                }
+                if (e.getSource() == loginPage.resetButton) {
+                    loginPage.userIDField.setText("");
+                    loginPage.userPasswordField.setText("");
+                }
+            }
+        });
+        loginPage.resetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == loginPage.resetButton) {
+                    loginPage.userIDField.setText("");
+                    loginPage.userPasswordField.setText("");
+                }
+            }
+
+
+        });
+    }
 
 
    public void Check(){
