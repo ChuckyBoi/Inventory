@@ -32,6 +32,7 @@ public class StateManager{
         audioPlayer.play();
         audioPlayer.pause();
         //make it so you dont use a.b1. ...
+
         a.b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 o.doAction(context);
@@ -82,6 +83,7 @@ public class StateManager{
 
 
         });
+        loginPage.linkAction();
     }
 
 

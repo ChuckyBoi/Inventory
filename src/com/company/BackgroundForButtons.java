@@ -28,11 +28,18 @@ class BackgroundForButtons extends JPanel {
             setLayout(null);
         }
 
-        public void setPosition(int x){
+        public void setPosX(int x){
             positionX=x;
         }
+        public int getPosX(){
+         return positionX;
+            }
+
         public void setLenght(int x){
             lenght=x;
+        }
+        public int returnSize(){
+            return lenght;
         }
         public void paint(Graphics g) {
           //  super.paintComponent(g);
