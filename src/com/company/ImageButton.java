@@ -58,7 +58,7 @@ public class ImageButton extends JButton {
 
                  if(sizeX<320) {
                      try {
-                         image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/LoginActive.png"));
+                         image = ImageIO.read(new File("C:/Users/user/IdeaProjects/Inventory/LoginActive.png"));
                          // image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/ButtonWithBorder2.png"));
                      } catch (IOException e) {
                          e.printStackTrace();
@@ -69,7 +69,7 @@ public class ImageButton extends JButton {
 
                     if (text.equals("Button1")) {
                         try {
-                            image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/button_active.png"));
+                            image = ImageIO.read(new File("C:/Users/user/IdeaProjects/Inventory/button_active.png"));
                             // image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/ButtonWithBorder2.png"));
 
                         } catch (IOException e) {
@@ -78,7 +78,7 @@ public class ImageButton extends JButton {
                     }
                     if (text.equals("Button2")) {
                         try {
-                            image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/button_2_active.png"));
+                            image = ImageIO.read(new File("C:/Users/user/IdeaProjects/Inventory/button_2_active.png"));
                             // image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/ButtonWithBorder2.png"));
 
                         } catch (IOException e) {
@@ -88,7 +88,7 @@ public class ImageButton extends JButton {
                     }
                     if (text.equals("Button3")) {
                         try {
-                            image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/button_3_active.png"));
+                            image = ImageIO.read(new File("C:/Users/user/IdeaProjects/Inventory/button_3_active.png"));
                             // image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/ButtonWithBorder2.png"));
 
                         } catch (IOException e) {
@@ -98,7 +98,7 @@ public class ImageButton extends JButton {
                     }
                     if (text.equals("Button4")) {
                         try {
-                            image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/button_4_active.png"));
+                            image = ImageIO.read(new File("C:/Users/user/IdeaProjects/Inventory/button_4_active.png"));
                             // image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/ButtonWithBorder2.png"));
 
                         } catch (IOException e) {
@@ -107,7 +107,7 @@ public class ImageButton extends JButton {
 
                     }if (text.equals("Button5")) {
                         try {
-                            image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/button_5_active.png"));
+                            image = ImageIO.read(new File("C:/Users/user/IdeaProjects/Inventory/button_5_active.png"));
                             // image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/ButtonWithBorder2.png"));
 
                         } catch (IOException e) {
@@ -156,7 +156,7 @@ public class ImageButton extends JButton {
 
         try {
             //create the font to use. Specify the size!
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("C:/Users/Szilard/Desktop/MAN/Orbitron.ttf")).deriveFont(40f);
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("C:/Users/user/IdeaProjects/Inventory/Orbitron.ttf")).deriveFont(40f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 
             ge.registerFont(customFont);

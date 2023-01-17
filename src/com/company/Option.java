@@ -19,19 +19,19 @@ public class Option extends Window{
     //Image img = Toolkit.getDefaultToolkit().createImage("C:/Users/Szilard/Desktop/MAN/stadium.jpg");
 
 
-    ImageButton b1 = new ImageButton("Button1","C:/Users/Szilard/Desktop/MAN/button.png");
-    ImageButton b2 = new ImageButton("Button2","C:/Users/Szilard/Desktop/MAN/button_2.png");
-    ImageButton b3 = new ImageButton("Button3","C:/Users/Szilard/Desktop/MAN/button_3.png");
-    ImageButton b4 = new ImageButton("Button4","C:/Users/Szilard/Desktop/MAN/button_4.png");
-    ImageButton b5 = new ImageButton("Button5","C:/Users/Szilard/Desktop/MAN/button_5.png");
+    ImageButton b1 = new ImageButton("Button1","C:/Users/user/IdeaProjects/Inventory/button.png");
+    ImageButton b2 = new ImageButton("Button2","C:/Users/user/IdeaProjects/Inventory/button_2.png");
+    ImageButton b3 = new ImageButton("Button3","C:/Users/user/IdeaProjects/Inventory/button_3.png");
+    ImageButton b4 = new ImageButton("Button4","C:/Users/user/IdeaProjects/Inventory/button_4.png");
+    ImageButton b5 = new ImageButton("Button5","C:/Users/user/IdeaProjects/Inventory/button_5.png");
 
   //  ImageButton Exit = new ImageButton("Exit","C:/Users/Szilard/Desktop/MAN/pngegg4.png");
 
 
-    Icon icon = new ImageIcon("C:/Users/Szilard/Desktop/MAN/stop2.png");
+    Icon icon = new ImageIcon("C:/Users/user/IdeaProjects/Inventory/stop2.png");
     JButton Music = new JButton(icon);
 
-    Background panel = new Background(new ImageIcon("C:/Users/Szilard/Desktop/MAN/SDA1.png").getImage());
+    Background panel = new Background(new ImageIcon("C:/Users/user/IdeaProjects/Inventory/SDA1.png").getImage());
   //  BackgroundForButtons panelForButtons = new BackgroundForButtons(new ImageIcon("C:/Users/Szilard/Desktop/MAN/ForButtons.png").getImage());
 
 
@@ -79,6 +79,7 @@ public class Option extends Window{
         b3.setLocation(super.getWidth()/2-b3.getSizeX()/2,super.getHeight()/2-b3.getSizeY()*1+10);
         b4.setLocation(super.getWidth()/2-b4.getSizeX()/2,super.getHeight()/2-b3.getSizeY()*0+20);
         b5.setLocation(super.getWidth()/2-b5.getSizeX()/2,super.getHeight()/2+b3.getSizeY()+30);
+        System.out.println(b1.getSize().getWidth());
 
 
         // Exit.setLocation(super.getWidth()/4-(int)Exit.getWidth()/2,super.getHeight()/2-(int)Exit.getHeight()*1/3);
