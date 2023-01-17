@@ -63,6 +63,7 @@ public class ImageButton extends JButton {
                      } catch (IOException e) {
                          e.printStackTrace();
                      }
+                     System.out.println("sug pula");
                  }
 
                 if(sizeX>710) {
