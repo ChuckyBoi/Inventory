@@ -34,7 +34,7 @@ public class ImageButton extends JButton {
         this.text= text;
         try {
             image = ImageIO.read(new File(path));
-            sizeX=image.getWidth(this);
+            sizeX=image.getWidth(this)-100;
             sizeY=image.getHeight(this);
 
         } catch (IOException e) {
@@ -165,8 +165,8 @@ public class ImageButton extends JButton {
             g.setColor(Color.WHITE);
             g.setFont(customFont);
 
-            int positionX = (image.getWidth(this) - metrics.stringWidth(text)) / 2;
-            int positionY = (image.getHeight(this)- metrics.getHeight()) / 2 + metrics.getAscent();
+            int positionX = (sizeX - metrics.stringWidth(text)) / 2;
+            int positionY = (sizeY- metrics.getHeight()) / 2 + metrics.getAscent();
             if(mouseEntered)
             {
                 positionX+=5;
