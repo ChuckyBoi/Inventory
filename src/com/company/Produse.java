@@ -5,16 +5,17 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.plaf.DesktopIconUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
+import javax.swing.text.DefaultTextUI;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.io.*;
 import java.net.URL;
 import java.sql.*;
@@ -23,14 +24,21 @@ public class Produse extends Window {
 
 
     Connection connection;
-    DefaultTableModel tableModel;
-    JTable table;
     Statement statement;
+
+    JTable table;
+    DefaultTableModel tableModel;
+    JScrollPane scrollPane;
+
     int number=30;
+    int ok=40;
 
     ImageButton back = new ImageButton("Main Menu", "C:/Users/Szilard/Desktop/MAN/Cancel.png");
+    Background panel = new Background(new ImageIcon("C:/Users/Szilard/Desktop/MAN/SDA2.jpg").getImage());
 
     Produse() {
+
+
         setTitle("Produse");
 
         setActivity(false);
@@ -40,9 +48,17 @@ public class Produse extends Window {
         contentPane = (JPanel) getContentPane();
         contentPane.setLayout(null);
 
-
         contentPane.add(back);
+
+
+
+
+
+
     }
+
+
+
 
     public void buttonsSetUp() {
 
@@ -53,30 +69,29 @@ public class Produse extends Window {
 
     }
 
-    public void viewData() {
-        String[] columnNames = {"id", "nume", "firma", "pret", "tva", "pret_final", "nr_articole", "Up", "Down"};
 
+     public void deletePreviousT(){
+
+
+
+     }
+    public void viewData() {
+
+
+        String[] columnNames = {"id", "nume", "firma", "pret", "tva", "pret_final", "nr_articole", "Up", "Down"};
         tableModel = new DefaultTableModel(columnNames, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                //all cells false
-
                 if (column == 1) {
                     return false;
                 } else {
                     return true;
                 }
             }
-
-            public void setValueAt(Object value, int row, int col) {
-
-                fireTableCellUpdated(row, col);
-            }
         };
+
         try {
-
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc_test", "root", "password2002");
-
             String sql = "select * from inventar";
             statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("select * from inventar");
@@ -90,45 +105,32 @@ public class Produse extends Window {
                 float pret_final = rs.getFloat("pret_final");
                 int nr_articole = rs.getInt("nr_articole");
 
+                System.out.println("nr articole in view data is " + nr_articole);
+
+
                 String[] data = {String.valueOf(id), name, firma, String.valueOf(pret), String.valueOf(tva), String.valueOf(pret_final), String.valueOf(nr_articole)};
                 tableModel.addRow(data);
             }
-            tableSetup();
+            tableSetup(tableModel);
 
-            System.out.println("value is " + tableModel.getValueAt(0,6));
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    public void tableSetup(DefaultTableModel tm){
 
 
-    /*
-    private void updateRow(int row)
-    {
-              DefaultTableModel model = (DefaultTableModel) table.getModel();
-              //  model.removeRow(row);
-              try{
 
-                      int id = Integer.valueOf(model.getValueAt(row,0).toString());
-                      String firma = model.getValueAt(row,1).toString();
-                      String name = model.getValueAt(row,2).toString();
-                      int pret = Integer.valueOf(model.getValueAt(row,3).toString());
-                      float tva = Float.valueOf(model.getValueAt(row,4).toString());
-                      float pret_final = Float.valueOf(model.getValueAt(row,5).toString());
-                      int nr_articole = Integer.valueOf(model.getValueAt(row,6).toString());
+        table = new JTable(tm);
+        scrollPane = new JScrollPane(table);
 
-                   String updateQuery="UPDATE 'inventar' SET 'id'='"+id+"', 'firma'='"+firma+"' , 'name'='"+name+"', 'pret'='"+pret+"', 'tva'='"+tva+"', 'pret_final'='"+pret_final+"','nr_articole'='"+nr_articole+"' ";
-                      statement.addBatch(updateQuery);
 
-                  int [] updatedRow= statement.executeBatch();
+        contentPane.add(scrollPane);
 
-              } catch (SQLException e) {
-                  e.printStackTrace();
-              }
-    }*/
-    public void tableSetup(){
-       table = new JTable(tableModel);
-        table.getModel().addTableModelListener(new TableModelListener() {
+
+        /*table.getModel().addTableModelListener(new TableModelListener() {
 
             @Override
             public void tableChanged(TableModelEvent e) {
@@ -137,18 +139,17 @@ public class Produse extends Window {
                 TableModel model = (TableModel)e.getSource();
                 Object data = model.getValueAt(row, column);
                 System.out.println("im gonna kms " + data);
-                //it shows where it has changed
+
             }
-        });
+        });*/
 
-        JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(36, 37, 800, 1200);
-
-      //  TableCellRenderer buttonRenderer = new ButtonRenderer();
+        scrollPane.setBounds(37, 37, 800, 1200);
 
 
         ButtonEditor up = new ButtonEditor(new JTextField());
         ButtonEditor down = new ButtonEditor(new JTextField());
+
+
 
 
         table.getColumnModel().getColumn(7).setCellRenderer(new ButtonRenderer());;
@@ -156,96 +157,79 @@ public class Produse extends Window {
         table.getColumnModel().getColumn(8).setCellRenderer(new ButtonRenderer());;
         table.getColumnModel().getColumn(8).setCellEditor(down);
 
-        up.btn.addActionListener(new ActionListener() {
 
+
+
+
+        up.btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    //getmouse pos
-                int rowIndex = table.getSelectedRow();
-                int colIndex = table.getSelectedColumn();
-                substract(rowIndex);
-             //   updateRow(rowIndex);
 
+
+                int rowIndex = table.getSelectedRow();
+                System.out.println("row index is " + rowIndex);
+                int colIndex = table.getSelectedColumn();
+                System.out.println("column index is "+ colIndex);
+                substract(rowIndex,tm);
+
+
+             //   updateRow(rowIndex);
             }
         });
         down.btn.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 //getmouse pos
+
+
                 int rowIndex = table.getSelectedRow();
                 int colIndex = table.getSelectedColumn();
-                add();
 
+                add(rowIndex,tm);
             }
         });
 
-        getContentPane().add(scrollPane);
+
+        contentPane.add(panel);
+
     }
-    public void substract(int row){
+    public void substract(int row,DefaultTableModel tm){
 
         try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc_test", "root", "password2002");
+            String query = "update inventar set nr_articole=? where id=? ";
+            PreparedStatement ps  = connection.prepareStatement(query);
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, number--);
+            ps.setInt(2, 1);
+            ps.executeUpdate();
 
+            tm.setValueAt(number, 0, 6);
+
+            System.out.println("Record is updated successfully......");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void add(int row,DefaultTableModel tm){
+
+        try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc_test", "root", "password2002");
             String query = "update inventar set nr_articole=? where id=? ";
             PreparedStatement ps  = connection.prepareStatement(query);
             ps = connection.prepareStatement(query);
 
-
-
-            ps.setInt(1, number--);
-            ps.setInt(2, 1);
-            ps.executeUpdate();
-
-            System.out.println("Record is updated successfully......");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        System.out.println(tableModel.getValueAt(0,6));
-        System.out.println(tableModel.getValueAt(0,5));
-        System.out.println(tableModel.getValueAt(0,4));
-        System.out.println(tableModel.getValueAt(0,3));
-        System.out.println(tableModel.getValueAt(0,2));
-        System.out.println(tableModel.getValueAt(0,1));
-        System.out.println(tableModel.getValueAt(0,0));
-
-
-        // tableModel.setValueAt(1,0,6);
-       viewData();
-       // tableSetup();
-
-
-    }
-
-    public void add(){
-
-        try {
-
-            //  connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc_test", "root", "password2002");
-            String query = "update inventar set nr_articole=? where id=? ";
-            PreparedStatement ps  = connection.prepareStatement(query);
-            ps = connection.prepareStatement(query);
             ps.setInt(1, number++);
             ps.setInt(2, 1);
             ps.executeUpdate();
 
-            System.out.println("Record is updated successfully......");
+            tm.setValueAt(number, 0, 6);
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(tableModel.getValueAt(0,6));
-        System.out.println(tableModel.getValueAt(0,5));
-        System.out.println(tableModel.getValueAt(0,4));
-        System.out.println(tableModel.getValueAt(0,3));
-        System.out.println(tableModel.getValueAt(0,2));
-        System.out.println(tableModel.getValueAt(0,1));
-        System.out.println(tableModel.getValueAt(0,0));
-
-
-        // tableModel.setValueAt(1,0,6);
-        viewData();
-        tableSetup();
-
     }
     public void showImage(int row){
 

@@ -18,7 +18,7 @@ public class StateManager{
 
     IDandPasswords idandPasswords = new IDandPasswords();
     LoginPage loginPage = new LoginPage(idandPasswords.getLoginInfo());
-    PlayMusic audioPlayer = new PlayMusic("C:/Users/user/IdeaProjects/Inventory/manU.wav");
+    PlayMusic audioPlayer = new PlayMusic("C:/Users/Szilard/Desktop/MAN/manU.wav");
 
     boolean startMusic=false;
 
@@ -45,7 +45,7 @@ public class StateManager{
                    }
                     if(column==7){
                         System.out.println("substract");
-                        Produse.substract(row);
+                      //  Produse.substract(row);
 
                     }
 
