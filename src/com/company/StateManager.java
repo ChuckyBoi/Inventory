@@ -2,21 +2,18 @@ package com.company;
 
 
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.security.spec.ECField;
-import java.util.Scanner;
 
 public class StateManager{
 
-    Application a = new Application();
-    Option o = new Option();
+    Options options = new Options();
+    MainMenu MainMenu = new MainMenu();
+    Produse Produse = new Produse();
+
     Context context = new Context();//Use the Context to see change in behaviour when State changes.
 
     IDandPasswords idandPasswords = new IDandPasswords();
@@ -33,19 +30,57 @@ public class StateManager{
         audioPlayer.pause();
         //make it so you dont use a.b1. ...
 
-        a.b1.addActionListener(new ActionListener() {
+
+        Produse.viewData();
+
+        Produse.table.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    JTable target = (JTable)e.getSource();
+                    int row = target.getSelectedRow();
+                    int column = target.getSelectedColumn();
+                   if(column==1){
+                       Produse.showImage( row);
+
+                   }
+                    if(column==7){
+                        System.out.println("substract");
+                        Produse.substract(row);
+
+                    }
+
+                }
+            }
+        });
+
+
+        Produse.back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                o.doAction(context);
+                MainMenu.doAction(context);
                 Check();
             }
         });
-        o.b1.addActionListener(new ActionListener() {
+        MainMenu.b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                a.doAction(context);
+                Produse.doAction(context);
                 Check();
             }
         });
-        o.Music.addActionListener(new ActionListener() {
+
+        options.b1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                MainMenu.doAction(context);
+                Check();
+            }
+        });
+        MainMenu.b3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                options.doAction(context);
+                Check();
+            }
+        });
+        MainMenu.Music.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
                 if (audioPlayer.status.equals("play")) {
@@ -91,15 +126,21 @@ public class StateManager{
        try {
            if(context.getState().toString().equals("Login")){
                loginPage.setActivity(false);
-               a.setActivity(true);
+               MainMenu.setActivity(true);
            }
            if (context.getState().toString().equals("Options")) {
-               a.setActivity(false);
-               o.setActivity(true);
+               options.setActivity(true);
+               MainMenu.setActivity(false);
+
            }
-           if (context.getState().toString().equals("Main menu")) {
-               o.setActivity(false);
-               a.setActivity(true);
+           if (context.getState().toString().equals("Main Menu")) {
+               MainMenu.setActivity(true);
+               options.setActivity(false);
+           }
+           if (context.getState().toString().equals("Produse")) {
+               MainMenu.setActivity(false);
+               Produse.viewData();
+               Produse.setActivity(true);
            }
 
        }

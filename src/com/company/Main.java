@@ -8,10 +8,6 @@ public class Main {
        StateManager a = new StateManager();
        a.run();
 
-
-
-
-
 	// write your code here
     }
 }

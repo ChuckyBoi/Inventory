@@ -2,16 +2,13 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 
 
-public class Application extends Window {
+public class Options extends Window {
 
     JButton b1 = new JButton();
 
-    public Application() {
+    public Options() {
         setup();
     }
     public void setup() {
@@ -21,6 +18,8 @@ public class Application extends Window {
         contentPane.setLayout(null);
 
         setTitle("CHARLES LECLERC");
+
+
         b1.setText("Options");
         b1.setSize(300,100);
         b1.setBounds(contentPane.getSize().width/2 - b1.getSize().width/2, contentPane.getSize().height/2 - b1.getSize().height/2, 300, 100);
@@ -38,13 +37,13 @@ public class Application extends Window {
     }
 
     public void doAction(Context context) {
-        System.out.println("Player is in Main menu");
+        System.out.println("Player is in Options");
         context.setState(this);
     }
 
 
     public String toString() {
-        return "Main menu";
+        return "Options";
     }
 
 }

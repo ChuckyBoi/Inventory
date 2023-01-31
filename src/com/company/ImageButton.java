@@ -34,7 +34,8 @@ public class ImageButton extends JButton {
         this.text= text;
         try {
             image = ImageIO.read(new File(path));
-            sizeX=image.getWidth(this)-100;
+
+            sizeX=image.getWidth(this);
             sizeY=image.getHeight(this);
 
         } catch (IOException e) {
@@ -69,7 +70,9 @@ public class ImageButton extends JButton {
 
                     if (text.equals("Button1")) {
                         try {
+
                             image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/button_active.png"));
+                            System.out.println("what");
                             // image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/ButtonWithBorder2.png"));
 
                         } catch (IOException e) {
@@ -124,20 +127,12 @@ public class ImageButton extends JButton {
 
           public void mouseExited(java.awt.event.MouseEvent evt) {
 
-
-
                 try {
                     image = ImageIO.read(new File(path));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-
-
-                    //set outline stroke too
-
-
-
+                    //set outline stroke to
             }
             @Override
             public void mousePressed(MouseEvent e) {

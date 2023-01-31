@@ -1,27 +1,16 @@
 package com.company;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.Scanner;
-import javax.swing.border.Border;
-import javax.swing.AbstractButton;
 
-public class Option extends Window{
+public class MainMenu extends Window{
 
     //Image img = Toolkit.getDefaultToolkit().createImage("C:/Users/Szilard/Desktop/MAN/stadium.jpg");
 
 
-    ImageButton b1 = new ImageButton("Button1","C:/Users/Szilard/Desktop/MAN/button.png");
-    ImageButton b2 = new ImageButton("Button2","C:/Users/Szilard/Desktop/MAN/button_2.png");
-    ImageButton b3 = new ImageButton("Button3","C:/Users/Szilard/Desktop/MAN/button_3.png");
+    ImageButton b1 = new ImageButton("Produse","C:/Users/Szilard/Desktop/MAN/button.png");
+    ImageButton b2 = new ImageButton("Alright","C:/Users/Szilard/Desktop/MAN/button_2.png");
+    ImageButton b3 = new ImageButton("Options","C:/Users/Szilard/Desktop/MAN/button_3.png");
     ImageButton b4 = new ImageButton("Button4","C:/Users/Szilard/Desktop/MAN/button_4.png");
     ImageButton b5 = new ImageButton("Button5","C:/Users/Szilard/Desktop/MAN/button_5.png");
 
@@ -34,10 +23,7 @@ public class Option extends Window{
     Background panel = new Background(new ImageIcon("C:/Users/Szilard/Desktop/MAN/SDA1.png").getImage());
   //  BackgroundForButtons panelForButtons = new BackgroundForButtons(new ImageIcon("C:/Users/Szilard/Desktop/MAN/ForButtons.png").getImage());
 
-
-
-
-    public Option()
+    public MainMenu()
     {
         setup();
     }
@@ -47,7 +33,7 @@ public class Option extends Window{
 
         Dimension Buttonsize = new Dimension(super.getWidth()/4,80);
 
-        setTitle("ALONSO");
+        setTitle("Main Menu");
 
         contentPane = (JPanel)getContentPane();
         contentPane.setLayout(null);
@@ -65,25 +51,21 @@ public class Option extends Window{
         b4.setSize(b4.getSizeX(),b4.getSizeY());
         b5.setSize(b5.getSizeX(),b5.getSizeY());
 
-
-
-
         //   Exit.setSize((int)Buttonsize.getWidth()/2,(int)Buttonsize.getHeight());
 
         Music.setSize(60,60);
 
+        b1.setLocation(super.getWidth()/2-b1.getSizeX()/2,super.getHeight()/2-5*b1.getSizeY()/2-30);
 
+        b2.setLocation(super.getWidth()/2-b2.getSizeX()/2,super.getHeight()/2-3*b2.getSizeY()/2-15);
 
-        b1.setLocation(super.getWidth()/2-b1.getSizeX()/2,super.getHeight()/2-b1.getSizeY()*3-10);
-        b2.setLocation(super.getWidth()/2-b2.getSizeX()/2,super.getHeight()/2-b2.getSizeY()*2);
-        b3.setLocation(super.getWidth()/2-b3.getSizeX()/2,super.getHeight()/2-b3.getSizeY()*1+10);
-        b4.setLocation(super.getWidth()/2-b4.getSizeX()/2,super.getHeight()/2-b3.getSizeY()*0+20);
-        b5.setLocation(super.getWidth()/2-b5.getSizeX()/2,super.getHeight()/2+b3.getSizeY()+30);
+        b3.setLocation(super.getWidth()/2-b3.getSizeX()/2,super.getHeight()/2-1*b3.getSizeY()/2);
 
+        b4.setLocation(super.getWidth()/2-b4.getSizeX()/2,super.getHeight()/2+1*b3.getSizeY()/2+15);
+
+        b5.setLocation(super.getWidth()/2-b5.getSizeX()/2,super.getHeight()/2+3*b3.getSizeY()/2+30);
 
         // Exit.setLocation(super.getWidth()/4-(int)Exit.getWidth()/2,super.getHeight()/2-(int)Exit.getHeight()*1/3);
-
-
 
         Music.setLocation(super.getWidth()-(int)Music.getSize().getWidth()*3/2,Music.getHeight()/4);
 
@@ -143,15 +125,17 @@ public class Option extends Window{
 
 
     public void doAction(Context context) {
-        System.out.println("Player is in Options");
+        System.out.println("Player is in Main Menu");
         context.setState(this);
     }
-    public void setActivity(boolean state) {
+
+    public void setActivity(boolean state)
+    {
         setVisible(state);
     }
 
     public String toString() {
-        return "Options";
+        return "Main Menu";
     }
 
 
