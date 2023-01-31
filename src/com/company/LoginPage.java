@@ -15,14 +15,14 @@ import javax.swing.border.Border;
 public class LoginPage extends Window implements ActionListener{
 
 
-    ImageButton loginButton = new ImageButton("Login","C:/Users/Szilard/Desktop/MAN/Login.png");
-    ImageButton resetButton = new ImageButton("Reset","C:/Users/Szilard/Desktop/MAN/Cancel.png");
+    ImageButton loginButton = new ImageButton("Login","C:/Users/user/IdeaProjects/Inventory/Login.png");
+    ImageButton resetButton = new ImageButton("Reset","C:/Users/user/IdeaProjects/Inventory/Cancel.png");
 
    // ImageButton User = new ImageButton("User","C:/Users/Szilard/Desktop/MAN/pngegg4.png");
    // ImageButton Password = new ImageButton("Password","C:/Users/Szilard/Desktop/MAN/pngegg4.png");
 
-    InputFields userIDField = new InputFields("C:/Users/Szilard/Desktop/MAN/Username.png");
-    PasswordField userPasswordField = new PasswordField("C:/Users/Szilard/Desktop/MAN/Password.png");
+    InputFields userIDField = new InputFields("C:/Users/user/IdeaProjects/Inventory/Username.png");
+    PasswordField userPasswordField = new PasswordField("C:/Users/user/IdeaProjects/Inventory/Password.png");
 
     JLabel messageLabel = new JLabel();
     String str="Forgotten password";
@@ -49,7 +49,7 @@ public class LoginPage extends Window implements ActionListener{
 
         try {
             //create the font to use. Specify the size!
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("C:/Users/Szilard/Desktop/MAN/Orbitron.ttf")).deriveFont(30f);
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("C:/Users/user/IdeaProjects/Inventory/Orbitron.ttf")).deriveFont(30f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             //register the font
             ge.registerFont(customFont);
@@ -72,7 +72,7 @@ public class LoginPage extends Window implements ActionListener{
 
 
 
-        Background panel = new Background(new ImageIcon("C:/Users/Szilard/Desktop/MAN/SDA.png").getImage());
+        Background panel = new Background(new ImageIcon("C:/Users/user/IdeaProjects/Inventory/SDA.png").getImage());
        // BackgroundForButtons panelForButtons = new BackgroundForButtons(new ImageIcon("C:/Users/Szilard/Desktop/MAN/ForButtons.png").getImage());
 
 

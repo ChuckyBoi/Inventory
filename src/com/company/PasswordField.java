@@ -20,7 +20,7 @@ public class PasswordField extends JPasswordField {
 
         try {
             image = ImageIO.read(new File(path));
-            sizeX=image.getWidth(this);
+            sizeX=image.getWidth(this)-100;
             sizeY=image.getHeight(this);
 
         } catch (IOException e) {
