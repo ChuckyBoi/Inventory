@@ -9,10 +9,10 @@ public class MainMenu extends Window{
 
 
     ImageButton b1 = new ImageButton("Produse","C:/Users/Szilard/Desktop/MAN/button.png");
-    ImageButton b2 = new ImageButton("Alright","C:/Users/Szilard/Desktop/MAN/button_2.png");
+    ImageButton b2 = new ImageButton("Hope","C:/Users/Szilard/Desktop/MAN/button_2.png");
     ImageButton b3 = new ImageButton("Options","C:/Users/Szilard/Desktop/MAN/button_3.png");
-    ImageButton b4 = new ImageButton("Button4","C:/Users/Szilard/Desktop/MAN/button_4.png");
-    ImageButton b5 = new ImageButton("Button5","C:/Users/Szilard/Desktop/MAN/button_5.png");
+    ImageButton b4 = new ImageButton("Help","C:/Users/Szilard/Desktop/MAN/button_4.png");
+    ImageButton b5 = new ImageButton("Exit","C:/Users/Szilard/Desktop/MAN/button_5.png");
 
   //  ImageButton Exit = new ImageButton("Exit","C:/Users/Szilard/Desktop/MAN/pngegg4.png");
 

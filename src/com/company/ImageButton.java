@@ -68,18 +68,18 @@ public class ImageButton extends JButton {
 
                 if(sizeX>710) {
 
-                    if (text.equals("Button1")) {
+                    if (text.equals("Produse")) {
                         try {
 
                             image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/button_active.png"));
-                            System.out.println("what");
+                            System.out.println("Produse");
                             // image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/ButtonWithBorder2.png"));
 
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                     }
-                    if (text.equals("Button2")) {
+                    if (text.equals("Hope")) {
                         try {
                             image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/button_2_active.png"));
                             // image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/ButtonWithBorder2.png"));
@@ -89,7 +89,7 @@ public class ImageButton extends JButton {
                         }
 
                     }
-                    if (text.equals("Button3")) {
+                    if (text.equals("Options")) {
                         try {
                             image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/button_3_active.png"));
                             // image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/ButtonWithBorder2.png"));
@@ -99,7 +99,7 @@ public class ImageButton extends JButton {
                         }
 
                     }
-                    if (text.equals("Button4")) {
+                    if (text.equals("Help")) {
                         try {
                             image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/button_4_active.png"));
                             // image = ImageIO.read(new File("C:/Users/Szilard/Desktop/MAN/ButtonWithBorder2.png"));

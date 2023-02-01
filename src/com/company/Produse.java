@@ -30,8 +30,11 @@ public class Produse extends Window {
     DefaultTableModel tableModel;
     JScrollPane scrollPane;
 
-    int number=30;
+    int[] myArr = new int[30];
+    int index=0;
+    int totalN=0;
     int ok=40;
+    int rowI=0;
 
     ImageButton back = new ImageButton("Main Menu", "C:/Users/Szilard/Desktop/MAN/Cancel.png");
     Background panel = new Background(new ImageIcon("C:/Users/Szilard/Desktop/MAN/SDA2.jpg").getImage());
@@ -49,12 +52,6 @@ public class Produse extends Window {
         contentPane.setLayout(null);
 
         contentPane.add(back);
-
-
-
-
-
-
     }
 
 
@@ -63,7 +60,7 @@ public class Produse extends Window {
     public void buttonsSetUp() {
 
         back.setSize(back.getSizeX(), back.getSizeY());
-        back.setLocation(1000, 300);
+        back.setLocation(1300, 500);
         back.setForeground(Color.black);
 
 
@@ -105,6 +102,9 @@ public class Produse extends Window {
                 float pret_final = rs.getFloat("pret_final");
                 int nr_articole = rs.getInt("nr_articole");
 
+                myArr[index]=nr_articole;
+                index++;
+
                 System.out.println("nr articole in view data is " + nr_articole);
 
 
@@ -113,11 +113,14 @@ public class Produse extends Window {
             }
             tableSetup(tableModel);
 
+            totalN=index-1;
+
 
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
     public void tableSetup(DefaultTableModel tm){
 
@@ -125,6 +128,7 @@ public class Produse extends Window {
 
         table = new JTable(tm);
         scrollPane = new JScrollPane(table);
+
 
 
         contentPane.add(scrollPane);
@@ -143,7 +147,8 @@ public class Produse extends Window {
             }
         });*/
 
-        scrollPane.setBounds(37, 37, 800, 1200);
+        scrollPane.setBounds(130, 90, 800, 1000);
+
 
 
         ButtonEditor up = new ButtonEditor(new JTextField());
@@ -160,18 +165,39 @@ public class Produse extends Window {
 
 
 
+        table.addMouseListener(new MouseListener(){
+
+            public void mouseClicked(MouseEvent e) {
+
+               int  rowIndex= table.rowAtPoint(e.getPoint());
+                System.out.println("row index is " + rowIndex);
+
+                setR(rowIndex);
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+
+
+        });
 
         up.btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
 
-                int rowIndex = table.getSelectedRow();
-                System.out.println("row index is " + rowIndex);
-                int colIndex = table.getSelectedColumn();
-                System.out.println("column index is "+ colIndex);
-                substract(rowIndex,tm);
-
+                substract(getR(),tm);
 
              //   updateRow(rowIndex);
             }
@@ -181,17 +207,22 @@ public class Produse extends Window {
             public void actionPerformed(ActionEvent e) {
                 //getmouse pos
 
-
                 int rowIndex = table.getSelectedRow();
                 int colIndex = table.getSelectedColumn();
 
-                add(rowIndex,tm);
+                add(getR(),tm);
             }
         });
 
 
         contentPane.add(panel);
 
+    }
+    public void setR(int r){
+        rowI=r;
+    }
+    public int getR(){
+        return rowI;
     }
     public void substract(int row,DefaultTableModel tm){
 
@@ -200,11 +231,11 @@ public class Produse extends Window {
             String query = "update inventar set nr_articole=? where id=? ";
             PreparedStatement ps  = connection.prepareStatement(query);
             ps = connection.prepareStatement(query);
-            ps.setInt(1, number--);
-            ps.setInt(2, 1);
+            ps.setInt(1, myArr[row]--);
+            ps.setInt(2, row);
             ps.executeUpdate();
 
-            tm.setValueAt(number, 0, 6);
+            tm.setValueAt( myArr[row], row, 6);
 
             System.out.println("Record is updated successfully......");
         } catch (Exception e) {
@@ -220,11 +251,11 @@ public class Produse extends Window {
             PreparedStatement ps  = connection.prepareStatement(query);
             ps = connection.prepareStatement(query);
 
-            ps.setInt(1, number++);
+            ps.setInt(1, myArr[row]++);
             ps.setInt(2, 1);
             ps.executeUpdate();
 
-            tm.setValueAt(number, 0, 6);
+            tm.setValueAt(myArr[row], row, 6);
 
 
         } catch (Exception e) {

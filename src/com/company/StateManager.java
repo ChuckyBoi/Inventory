@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+
 public class StateManager{
 
     Options options = new Options();
@@ -79,6 +81,14 @@ public class StateManager{
                 options.doAction(context);
                 Check();
             }
+        });
+        MainMenu.b5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+
+
+
         });
         MainMenu.Music.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
